@@ -21,6 +21,7 @@ public class RestAPIServlet extends HttpServlet {
         Connection connection = null;
         try {
             connection = ConexaoFactory.getConnection();
+            resp.getWriter().println("Ups");
         } catch (Exception e) {
             resp.getWriter().println(e.getMessage());
             resp.setStatus(405);
