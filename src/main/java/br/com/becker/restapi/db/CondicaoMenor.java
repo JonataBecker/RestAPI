@@ -2,14 +2,14 @@ package br.com.becker.restapi.db;
 
 /**
  * Classe responsável por condições para filtro
- * 
+ *
  * @author Jonata Becker
  */
-public class CondicaoIgual implements Condicao {
+public class CondicaoMenor implements Condicao {
 
     /**
      * Retorna o valor de acordo com o operador
-     * 
+     *
      * @param value
      * @return Object
      */
@@ -20,11 +20,12 @@ public class CondicaoIgual implements Condicao {
 
     /**
      * Retorna o operador
-     * 
+     *
      * @return String
      */
     @Override
     public String getOperador() {
-        return "=";
+        return "<";
     }
+
 }

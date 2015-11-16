@@ -1,11 +1,11 @@
 package br.com.becker.restapi.db;
 
 /**
- * Classe responsável por controlar as condição para filtro de busca de informações
+ * Classe responsável por condições para filtro
  * 
  * @author Jonata Becker
  */
-public interface Condicao {
+public class CondicaoMaior implements Condicao {
 
     /**
      * Retorna o valor de acordo com o operador
@@ -13,13 +13,18 @@ public interface Condicao {
      * @param value
      * @return Object
      */
-    public Object formatValue(Object value);    
-    
+    @Override
+    public Object formatValue(Object value) {
+        return value;
+    }
+
     /**
      * Retorna o operador
      * 
      * @return String
      */
-    public String getOperador();
-    
+    @Override
+    public String getOperador() {
+        return ">";
+    }
 }
