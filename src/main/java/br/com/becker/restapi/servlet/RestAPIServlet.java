@@ -1,5 +1,6 @@
 package br.com.becker.restapi.servlet;
 
+import br.com.becker.restapi.ParameterURL;
 import br.com.becker.restapi.db.ConexaoFactory;
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,8 +21,7 @@ public class RestAPIServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
         try {
-            connection = ConexaoFactory.getConnection();
-            resp.getWriter().println("Ups");
+            resp.getWriter().println(new ParameterURL(req).getEntidade());
         } catch (Exception e) {
             resp.getWriter().println(e.getMessage());
             resp.setStatus(405);
