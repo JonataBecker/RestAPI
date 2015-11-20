@@ -1,5 +1,6 @@
 package br.com.becker.restapi.db;
 
+import br.com.becker.restapi.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -35,7 +36,7 @@ public class EntidadeDAO {
         try {
             JSONArray arr = new JSONArray();
             statement = conn.createStatement();
-            resultSet = statement.executeQuery(sql.create());
+            resultSet = statement.executeQuery(sql.createSelect());
             ResultSetMetaData resultSetMeta = resultSet.getMetaData();
             while (resultSet.next()) {
                 int numColumns = resultSetMeta.getColumnCount();
@@ -49,12 +50,8 @@ public class EntidadeDAO {
         } catch (SQLException e) {
             throw e;
         } finally {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (statement != null) {
-                statement.close();
-            }
+            DBUtils.close(resultSet);
+            DBUtils.close(statement);
         }
     }
 }

@@ -1,12 +1,15 @@
 package br.com.becker.restapi.db;
 
 /**
- *
+ * Classe responsável pela criação de comandos SQL
+ * 
  * @author Jonata Becker
  */
 public class SQLCreator {
-
+    
+    /** Dados da entidade */
     private final Entidade entidade;
+    /** Dados de filtros */
     private final Filtro filtro;
 
     public SQLCreator(Entidade entidade) {
@@ -18,7 +21,12 @@ public class SQLCreator {
         this.filtro = filtro;
     }
 
-    public String create() {
+    /**
+     * Executa crição de comandos SELECT
+     * 
+     * @return String
+     */
+    public String createSelect() {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM ").append(entidade.getNome());
         if (filtro.isPossuiFiltro()) {
